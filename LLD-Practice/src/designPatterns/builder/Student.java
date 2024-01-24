@@ -9,14 +9,14 @@ public class Student {
     private int age;
     private String phoneNumber;
 
-    public Student(int id, String name, String universityName, int gradYear, int psp, int age, String phoneNumber) {
-        this.id = id;
-        this.name = name;
-        this.universityName = universityName;
-        this.gradYear = gradYear;
-        this.psp = psp;
-        this.age = age;
-        this.phoneNumber = phoneNumber;
+    public Student(Builder builder) {
+        this.id = builder.id;
+        this.name = builder.name;
+        this.universityName = builder.universityName;
+        this.gradYear = builder.gradYear;
+        this.psp = builder.psp;
+        this.age = builder.age;
+        this.phoneNumber = builder.phoneNumber;
     }
 
     @Override
@@ -96,9 +96,14 @@ public class Student {
             }
         }
 
+//        public Student build(){
+//            validate();
+//            return new Student(this.id, this.name, this.universityName, this.gradYear, this.psp, this.age, this.phoneNumber);
+//        }
+
         public Student build(){
             validate();
-            return new Student(this.id, this.name, this.universityName, this.gradYear, this.psp, this.age, this.phoneNumber);
+            return new Student(this);
         }
     }
 }

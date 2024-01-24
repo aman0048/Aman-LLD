@@ -6,7 +6,7 @@ public class Main {
                 .setId(12)
                 .setAge(24)
                 .setName("Aman")
-                .setGradYear(2024)
+                .setGradYear(2022)
                 .setPsp(20)
                 .setUniversityName("IP")
                 .setPhoneNumber("9811")
