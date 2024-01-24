@@ -9,7 +9,7 @@ public class Student {
     private int age;
     private String phoneNumber;
 
-    public Student(Builder builder) {
+    private Student(Builder builder) {
         this.id = builder.id;
         this.name = builder.name;
         this.universityName = builder.universityName;
