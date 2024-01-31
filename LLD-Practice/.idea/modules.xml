@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../DSA-Practice/DSA-Practice/DSA-Practice.iml" filepath="$PROJECT_DIR$/../../DSA-Practice/DSA-Practice/DSA-Practice.iml" />
       <module fileurl="file://$PROJECT_DIR$/LLD-Practice.iml" filepath="$PROJECT_DIR$/LLD-Practice.iml" />
     </modules>
   </component>
