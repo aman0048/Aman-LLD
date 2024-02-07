@@ -1,0 +1,5 @@
+A regular class can inherit only one class, but it can inherit multiple interfaces.
+If we create an abstract class, it is still a class, therefore, if a regular class wants to inherit it,
+it can only inherit one class.
+Abstract classes are used when we want to add attributes + Methods.
+Interface are used when we only want method.

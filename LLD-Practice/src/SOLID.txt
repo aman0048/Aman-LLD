@@ -1,0 +1,12 @@
+SOLID
+S - Single Responsibility Principle - How to identify
+	1) Multiple if else, monster method, util classes
+O - Open/Closed Principle -> If we have to add multiple if-else then it causes OCP violation.
+L - Liskov Substitution Principle
+I - Interface Segregation Principle
+D - Dependency Inversion Principle -> no two concrete classes should dependent upon each other. There should be some sort of abstraction
+
+Whenever you wil see multiple ways to do something generally code implementation will violate SPR and OCP
+When we want to group something together, we create am interface
+
+When we have shared list of resources or shared resources, then convert that class to singleton class
