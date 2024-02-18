@@ -1,1 +1,9 @@
 Hello
+
+record_data = {a, b, c, d}
+task_payload = addData(record_data, legacy_data);
+addData(record_data, legacy_data){
+    enterprise
+    claimDocId
+    category
+}
