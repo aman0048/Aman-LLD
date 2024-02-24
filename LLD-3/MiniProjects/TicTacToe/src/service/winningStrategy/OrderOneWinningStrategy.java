@@ -53,7 +53,6 @@ public class OrderOneWinningStrategy implements WinningStrategy{
                                 || (checkRightDiagonal(row, col) && commonHashMapCode(rightDiagonal, symbol));
 
         if (checkWinner){
-            System.out.println("CHECKING THE WINNWE -> " + checkWinner);
             return player;
         }else{
             return null;

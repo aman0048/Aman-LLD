@@ -36,6 +36,7 @@ public class TicTacToe {
         Game game = gameController.createGame(dimension, playerList, WinningFactoryName.ORDERONEWINNINGSTRATEGY);
 
         int playerIndex = -1;
+        int symbolsPlacedCount = 0;
         while (game.getGameStatus().equals(GameStatus.IN_PROGRESS)) {
             playerIndex++;
             playerIndex = (playerIndex) % playerList.size(); // Increment playerIndex at the start of the loop
@@ -47,8 +48,15 @@ public class TicTacToe {
                 System.out.println("Invalid move! Please try again.");
                 playerIndex--; // Decrement playerIndex to allow the same player to make another move
             } else {
+                symbolsPlacedCount++;
+                game.getMoves().add(playedMove);
+                game.getBoardStates().add(game.getBoard());
                 Player winnerPlayer = gameController.checkWinner(game, playedMove);
                 if (winnerPlayer != null ) {
+                    if(symbolsPlacedCount == dimension * dimension) {
+                        System.out.println("There is No Winner game is drawn");
+                        break;
+                    }
                     System.out.println("WINNER IS : " + winnerPlayer.getName());
                     break;
                 }
