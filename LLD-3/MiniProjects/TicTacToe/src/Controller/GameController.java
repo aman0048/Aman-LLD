@@ -2,7 +2,6 @@ package Controller;
 
 import model.*;
 import service.winningStrategy.WinningFactoryName;
-import service.winningStrategy.WinningStrategy;
 import service.winningStrategy.WinningStrategyFactory;
 
 import java.util.List;
@@ -22,7 +21,6 @@ public class GameController {
         game.getBoard().displayBoard();
     }
 
-    // Get the status of the game
     public GameStatus gameStatus(Game game){
         return game.getGameStatus();
     }
@@ -38,9 +36,5 @@ public class GameController {
     // For the Doraemon approach
     public Board undoMove(Game game, Move lastPlayedMove){
         return null;
-    }
-
-    public void replayGame(Game game){
-
     }
 }

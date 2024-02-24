@@ -16,3 +16,13 @@ Build game class with builder design pattern. To build the game we need the boar
 Board has two things, once is initialization of the board and display board and for building the board, we need
 the cell class. In cell the cell constructor and the display cell and everything is a support class.
 
+Day 2:
+We build WinningStrategy of OrderWinningStrategy and Bot playing strategy with Random Bot playing strategy
+We added implementation calls in controller
+We created a TicTacToe main class, where we are taking inputs and calling methods to build games.
+
+Day3:
+We modified a little bit code, completed TODOs, Added all validations check
+Created two bot playing strategy Normal and Random
+Updated TicTacToe and added a replay logic in TicTacToe class.
+
