@@ -50,7 +50,8 @@ public class OrderOneWinningStrategy implements WinningStrategy{
                                 || commonHashMapCode(rowHashMapList.get(row), symbol)
                                 || commonHashMapCode(colHashMapList.get(col), symbol)
                                 || (checkLeftDiagonal(row, col) && commonHashMapCode(leftDiagonal, symbol))
-                                || (checkRightDiagonal(row, col) && commonHashMapCode(rightDiagonal, symbol));
+                                || (checkRightDiagonal(row, col) && commonHashMapCode(rightDiagonal, symbol)
+                            );
 
         if (checkWinner){
             return player;

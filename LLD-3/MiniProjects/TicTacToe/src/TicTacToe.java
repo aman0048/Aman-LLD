@@ -1,6 +1,5 @@
 import Controller.GameController;
 import model.*;
-import service.botPlayingStrategy.BoltPlayingStrategyFactory;
 import service.winningStrategy.WinningFactoryName;
 
 import java.util.ArrayList;
@@ -28,7 +27,6 @@ public class TicTacToe {
                 System.out.println("2. Random");
                 int botDifficultyChoice = sc.nextInt();
                 Player bot = new Bot(id++, '$', botDifficultyChoice);
-                
                 playerList.add(bot);
             }
             

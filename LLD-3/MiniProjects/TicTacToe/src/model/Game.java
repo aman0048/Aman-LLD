@@ -27,7 +27,7 @@ public class Game {
         this.currentPlayer = null;
         this.moves = new ArrayList<>(); // In the beginning there will be no moves
         this.boardStates = new ArrayList<>(); // In the beginning there will be no boardStates
-        this.gameStatus = GameStatus.IN_PROGRESS; // creating a new game, it should be Inprogress
+        this.gameStatus = GameStatus.IN_PROGRESS; // creating a new game, it should be In-progress
         this.winningStrategy = winningStrategy;
         this.numberOfSymbols = players.size();
     }
@@ -145,10 +145,10 @@ public class Game {
 //            }
 
             // Lambda Expression in two ways
-            // 1) Using methods reference
+            // Using lambda expression
+            // 1) Set<Character> symbols1 = players.stream().map(player -> player.getSymbol()).collect(Collectors.toSet());
+            // 2) Using methods reference
             Set<Character> symbol = players.stream().map(Player::getSymbol).collect(Collectors.toSet());
-//            // Using lambda expression
-//            // 2) Set<Character> symbols1 = players.stream().map(player -> player.getSymbol()).collect(Collectors.toSet());
             if(symbol.size() != players.size()){
                 throw new InvalidSymbolException("There should be unique numbers for all the players");
             }
@@ -156,15 +156,16 @@ public class Game {
 
         private void validateBotCount(){
             // TODO : Convert the below code method into lambda expression using streams
-//            int botCount = 0;
-//            for (Player player : players){
-//                if(player.getPlayerType().equals(PlayerType.BOT)){
-//                    botCount++;
-//                }
-//            }
-//            if (botCount> 1 || botCount < 0){
-//                throw new InvalidBotCountException("We can have maximum 1 bot per game");
-//            }
+/*            int botCount = 0;
+            for (Player player : players){
+                if(player.getPlayerType().equals(PlayerType.BOT)){
+                    botCount++;
+                }
+            }
+            if (botCount> 1 || botCount < 0){
+                throw new InvalidBotCountException("We can have maximum 1 bot per game");
+            }
+ */
             long botCount = players.stream()
                     .filter(player -> player.getPlayerType().equals(PlayerType.BOT))
                     .count();
