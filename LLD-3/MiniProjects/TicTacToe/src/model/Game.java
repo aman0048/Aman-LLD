@@ -7,7 +7,6 @@ import exception.InvalidSymbolException;
 import service.winningStrategy.WinningStrategy;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -130,9 +129,9 @@ public class Game {
         private void validateNumberOfPlayers(){
             // N, no bot present -> players = n-1
             // N, bot present -> players = n-2
-           if(players.size() < dimension - 2 || players.size() >= dimension){
-               throw new InvalidPlayerSizeException("Player size should be N-2 or N-1 as per the board size");
-           }
+            if(players.size() < dimension - 2 || players.size() >= dimension){
+                throw new InvalidPlayerSizeException("Player size should be N-2 or N-1 as per the board size");
+            }
         }
 
         private void validatePlayerSymbols(){

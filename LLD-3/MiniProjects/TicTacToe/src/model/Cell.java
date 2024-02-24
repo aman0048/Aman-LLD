@@ -21,6 +21,10 @@ public class Cell {
             System.out.print("|" + player.getSymbol() + "|");
         }
     }
+
+    public boolean isEmpty() {
+        return cellState == CellState.EMPTY && player == null;
+    }
     public int getRow() {
         return row;
     }

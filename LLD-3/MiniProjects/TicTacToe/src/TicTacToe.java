@@ -1,5 +1,6 @@
 import Controller.GameController;
 import model.*;
+import service.botPlayingStrategy.BoltPlayingStrategyFactory;
 import service.winningStrategy.WinningFactoryName;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ public class TicTacToe {
         GameController gameController = new GameController();
         Scanner sc = new Scanner(System.in);
         boolean replay = true;
-
+        
         while (replay) {
             int id = 1;
             List<Player> playerList = new ArrayList<>();
@@ -22,10 +23,15 @@ public class TicTacToe {
             System.out.println("Do you want a Bot in the game ? Y or N");
             String botInput = sc.next();
             if (botInput.equalsIgnoreCase("Y")) {
-                Player bot = new Bot(id++, '$', BotDifficultyLevel.EASY);
+                System.out.println("Choose bot difficulty level:");
+                System.out.println("1. Normal");
+                System.out.println("2. Random");
+                int botDifficultyChoice = sc.nextInt();
+                Player bot = new Bot(id++, '$', botDifficultyChoice);
+                
                 playerList.add(bot);
             }
-
+            
             while (id < dimension) { // or we can use playerList.size() < dimension
                 System.out.println("Please Enter the Player name");
                 String playerName = sc.next();
@@ -34,10 +40,10 @@ public class TicTacToe {
                 Player player = new Player(id++, playerName, symbol, PlayerType.HUMAN);
                 playerList.add(player);
             }
-
+            
             Collections.shuffle(playerList);
             Game game = gameController.createGame(dimension, playerList, WinningFactoryName.ORDERONEWINNINGSTRATEGY);
-
+            
             int playerIndex = -1;
             int symbolsPlacedCount = 0;
             while (game.getGameStatus().equals(GameStatus.IN_PROGRESS)) {

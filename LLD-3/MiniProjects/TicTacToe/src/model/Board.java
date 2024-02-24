@@ -35,6 +35,17 @@ public class Board {
             System.out.println();
         }
     }
+    public List<Cell> getEmptyCells() {
+        List<Cell> emptyCells = new ArrayList<>();
+        for (List<Cell> row : matrix) {
+            for (Cell cell : row) {
+                if (cell.isEmpty()) {
+                    emptyCells.add(cell);
+                }
+            }
+        }
+        return emptyCells;
+    }
     public List<List<Cell>> getMatrix() {
         return matrix;
     }

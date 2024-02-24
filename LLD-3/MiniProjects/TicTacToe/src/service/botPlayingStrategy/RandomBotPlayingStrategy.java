@@ -4,24 +4,27 @@ import exception.GameOverException;
 import model.*;
 
 import java.util.List;
+import java.util.Random;
 
 public class RandomBotPlayingStrategy implements BotPlayingStrategy{
 
     @Override
     public Move makeMove(Board board, Player bot){
-        int dimension = board.getDimension();
         List<List<Cell>> matrix = board.getMatrix();
+        Random random = new Random();
 
-        for (int i = 0; i < dimension; i++){
-            for (int j = 0; j < dimension; j++) {
-                Cell cell = matrix.get(i).get(j);
-                if (cell.getCellState().equals(CellState.EMPTY)) {
-                    cell.setCellState(CellState.FILLED);
-                    cell.setPlayer(bot);
-                    return new Move(cell, bot);
-                }
-            }
+        // Create a list to store empty cells
+        List<Cell> emptyCells = board.getEmptyCells();
+
+        // If there are no empty cells, return null
+        if (emptyCells.isEmpty()) {
+            System.out.println("The board is full. Cannot make a move.");
+            return null;
         }
-        throw new GameOverException("There are no empty cells in the board");
+        // Select a random empty cell and make a move
+        Cell randomCell = emptyCells.get(random.nextInt(emptyCells.size()));
+        randomCell.setCellState(CellState.FILLED);
+        randomCell.setPlayer(bot);
+        return new Move(randomCell, bot);
     }
 }
