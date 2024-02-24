@@ -1,5 +1,6 @@
 package model;
 
+import exception.InvalidBoardDimensionException;
 import exception.InvalidBotCountException;
 import exception.InvalidPlayerSizeException;
 import exception.InvalidSymbolException;
@@ -21,7 +22,7 @@ public class Game {
     private WinningStrategy winningStrategy;
     private int numberOfSymbols;
 
-    public Game(Board board, List<Player> players, WinningStrategy winningStrategy) {
+    private Game(Board board, List<Player> players, WinningStrategy winningStrategy) {
         this.board = board;
         this.players = players;
         this.currentPlayer = null;
@@ -104,7 +105,6 @@ public class Game {
         private Board board;
         private List<Player> players;
         private WinningStrategy winningStrategy;
-
         private int dimension;
 
         public Builder setBoard(Board board) {
@@ -130,26 +130,26 @@ public class Game {
         private void validateNumberOfPlayers(){
             // N, no bot present -> players = n-1
             // N, bot present -> players = n-2
-           if(players.size() < board.getDimension() - 2 || players.size() >= board.getDimension()){
+           if(players.size() < dimension - 2 || players.size() >= dimension){
                throw new InvalidPlayerSizeException("Player size should be N-2 or N-1 as per the board size");
            }
         }
 
         private void validatePlayerSymbols(){
             // TODO : Convert the below code method into lambda expression using streams
-           /* HashSet<Character> symbols = new HashSet<>();
-            for(Player player : players){
-                symbols.add(player.getSymbol());
-            }
-            if(symbols.size() != players.size()){
-                throw new InvalidSymbolException("There should be unique numbers for all the players");
-            }*/
+//            HashSet<Character> symbols = new HashSet<>();
+//            for(Player player : players){
+//                symbols.add(player.getSymbol());
+//            }
+//            if(symbols.size() != players.size()){
+//                throw new InvalidSymbolException("There should be unique numbers for all the players");
+//            }
 
             // Lambda Expression in two ways
             // 1) Using methods reference
             Set<Character> symbol = players.stream().map(Player::getSymbol).collect(Collectors.toSet());
-            // Using lambda expression
-            // 2) Set<Character> symbols1 = players.stream().map(player -> player.getSymbol()).collect(Collectors.toSet());
+//            // Using lambda expression
+//            // 2) Set<Character> symbols1 = players.stream().map(player -> player.getSymbol()).collect(Collectors.toSet());
             if(symbol.size() != players.size()){
                 throw new InvalidSymbolException("There should be unique numbers for all the players");
             }
@@ -157,24 +157,30 @@ public class Game {
 
         private void validateBotCount(){
             // TODO : Convert the below code method into lambda expression using streams
-/*            int botCount = 0;
-            for (Player player : players){
-                if(player.getPlayerType().equals(PlayerType.BOT)){
-                    botCount++;
-                }
-            }
-            if (botCount> 1 || botCount < 0){
-                throw new InvalidBotCountException("We can have maximum 1 bot per game");
-            }
-            */
+//            int botCount = 0;
+//            for (Player player : players){
+//                if(player.getPlayerType().equals(PlayerType.BOT)){
+//                    botCount++;
+//                }
+//            }
+//            if (botCount> 1 || botCount < 0){
+//                throw new InvalidBotCountException("We can have maximum 1 bot per game");
+//            }
             long botCount = players.stream()
                     .filter(player -> player.getPlayerType().equals(PlayerType.BOT))
                     .count();
-            if (botCount> 1 || botCount < 0){
+            if (botCount < 0 || botCount> 1){
                 throw new InvalidBotCountException("We can have maximum 1 bot per game");
             }
         }
+
+        private void validateDimension(){
+            if (dimension < 3 || dimension > 10){
+                throw new InvalidBoardDimensionException("Board Dimension should be between 3 and 10");
+            }
+        }
         private void validate(){
+            validateDimension();
             validateBotCount();
             validateNumberOfPlayers();
             validatePlayerSymbols();

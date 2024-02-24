@@ -1,13 +1,20 @@
 package Controller;
 
 import model.*;
+import service.winningStrategy.WinningFactoryName;
 import service.winningStrategy.WinningStrategy;
+import service.winningStrategy.WinningStrategyFactory;
 
 import java.util.List;
 
 public class GameController {
-    public Game createGame(int dimension, List<Player> player, WinningStrategy winningStrategy){
-        return null;
+    public Game createGame(int dimension, List<Player> player, WinningFactoryName winningFactoryName){
+        return Game.builder()
+                .setDimension(dimension)
+//                .setBoard(new Board(dimension))
+                .setPlayers(player)
+                .setWinningStrategy(WinningStrategyFactory.getWinningStrategy(winningFactoryName, dimension))
+                .build();
     }
 
     // For whatever game is going on display the board
@@ -17,19 +24,15 @@ public class GameController {
 
     // Get the status of the game
     public GameStatus gameStatus(Game game){
-        return null;
-    }
-
-    public Player getWinner(Game game){
-        return null;
+        return game.getGameStatus();
     }
 
     public Player checkWinner(Game game, Move lastPlayedMove){
-        return null;
+        return game.getWinningStrategy().checkWinner(game.getBoard(), lastPlayedMove);
     }
 
     public Move executeMove(Game game, Player player){
-        return null;
+        return player.makeMove(game.getBoard());
     }
 
     // For the Doraemon approach

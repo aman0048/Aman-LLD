@@ -6,7 +6,6 @@ public class Player {
     private int id;
     private String name;
     private char symbol;
-
     private PlayerType playerType;
 
     public Player() {
@@ -19,22 +18,23 @@ public class Player {
         this.playerType = playerType;
     }
 
-    public Move makeMove(Board board){
+    public Move makeMove(Board board) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the row for the target cell");
         int row = sc.nextInt();
         System.out.println("Enter the col for the target cell");
         int col = sc.nextInt();
-
-        // Need to do the validation to check the player.
-        // TODO : In bound check, filled or not filled
-        if ((row >= board.getDimension() || col >= board.getDimension()) || (row < 0 || col <0)){
+        // In bound check
+        if (row < 0 || row >= board.getDimension() || col < 0 || col >= board.getDimension()) {
             throw new ArrayIndexOutOfBoundsException("Placing values outside the dimensions");
         }
         Cell playedMovedCell = board.getMatrix().get(row).get(col);
+        // If the cell is already filled
+        if (playedMovedCell.getCellState() == CellState.FILLED) {
+            return new Move(null, this);
+        }
         playedMovedCell.setCellState(CellState.FILLED);
-        playedMovedCell.setPlayer(this); // current player
-
+        playedMovedCell.setPlayer(this);
         return new Move(playedMovedCell, this);
     }
     public char getSymbol() {
@@ -53,4 +53,19 @@ public class Player {
         this.playerType = playerType;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

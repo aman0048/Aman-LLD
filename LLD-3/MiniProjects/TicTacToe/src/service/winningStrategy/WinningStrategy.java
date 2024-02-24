@@ -4,8 +4,6 @@ import model.Board;
 import model.Move;
 import model.Player;
 
-public class WinningStrategy {
-    Player checkWinner(Board board, Move lastMove){
-        return null;
-    }
+public interface WinningStrategy {
+    Player checkWinner(Board board, Move lastMove);
 }
