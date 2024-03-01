@@ -8,6 +8,7 @@ import java.util.Map;
 
 public class PaymentRepository {
      private final Map<Integer, Payment> paymentMap;
+    private static int counter = 0;
 
      public PaymentRepository(){
          this.paymentMap = new HashMap<>();
@@ -22,6 +23,7 @@ public class PaymentRepository {
      }
 
      public void put(Payment payment){
+         payment.setId(++counter);
          paymentMap.put(payment.getId(), payment);
          System.out.println("Payment has been added successfully");
      }

@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class BillRepository {
      private final Map<Integer, Bill> billMap;
-
+    private static int counter = 0;
      public BillRepository(){
          this.billMap = new HashMap<>();
      }
@@ -22,6 +22,7 @@ public class BillRepository {
      }
 
      public void put(Bill bill){
+         bill.setId(++counter);
          billMap.put(bill.getId(), bill);
          System.out.println("Bill has been added successfully");
      }

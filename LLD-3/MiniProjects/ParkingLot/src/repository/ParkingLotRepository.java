@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class ParkingLotRepository {
      private final Map<Integer, ParkingLot> parkingLotMap;
-
+     private static int counter = 0;
      public ParkingLotRepository(){
          this.parkingLotMap = new HashMap<>();
      }
@@ -22,6 +22,7 @@ public class ParkingLotRepository {
      }
 
      public void put(ParkingLot parkingLot){
+         parkingLot.setId(++counter);
          parkingLotMap.put(parkingLot.getId(), parkingLot);
          System.out.println("ParkingLot has been added successfully");
      }

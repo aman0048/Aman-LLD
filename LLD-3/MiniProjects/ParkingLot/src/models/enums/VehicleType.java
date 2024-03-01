@@ -1,7 +1,6 @@
 package models.enums;
 
 public enum VehicleType {
-    AVAILABLE,
-    NOT_AVAILABLE,
-    FULL
+    FOUR_WHEELER,
+    TWO_WHEELER
 }

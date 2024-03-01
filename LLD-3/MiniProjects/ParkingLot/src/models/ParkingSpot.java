@@ -1,21 +1,24 @@
 package models;
 
 import models.enums.ParkingLotStatus;
+import models.enums.ParkingSpotStatus;
 import models.enums.VehicleType;
+
+import java.time.LocalDateTime;
 
 public class ParkingSpot extends BaseModel {
     private int number;
     private VehicleType vehicleType;
-    private ParkingLotStatus parkingLotStatus;
+    private ParkingSpotStatus parkingSpotStatus;
     private Vehicle vehicle;
 
     public ParkingSpot() {
     }
 
-    public ParkingSpot(int number, VehicleType vehicleType, ParkingLotStatus parkingLotStatus, Vehicle vehicle) {
+    public ParkingSpot(int number, VehicleType vehicleType, ParkingSpotStatus parkingSpotStatus, Vehicle vehicle) {
         this.number = number;
         this.vehicleType = vehicleType;
-        this.parkingLotStatus = parkingLotStatus;
+        this.parkingSpotStatus = parkingSpotStatus;
         this.vehicle = vehicle;
     }
 
@@ -35,12 +38,12 @@ public class ParkingSpot extends BaseModel {
         this.vehicleType = vehicleType;
     }
 
-    public ParkingLotStatus getParkingLotStatus() {
-        return parkingLotStatus;
+    public ParkingSpotStatus getParkingSpotStatus() {
+        return parkingSpotStatus;
     }
 
-    public void setParkingLotStatus(ParkingLotStatus parkingLotStatus) {
-        this.parkingLotStatus = parkingLotStatus;
+    public void setParkingSpotStatus(ParkingSpotStatus parkingSpotStatus) {
+        this.parkingSpotStatus = parkingSpotStatus;
     }
 
     public Vehicle getVehicle() {
