@@ -37,8 +37,8 @@ public class InitializationService {
         parkingLot.setVehicleTypesSupported(List.of(VehicleType.FOUR_WHEELER, VehicleType.TWO_WHEELER));
         List<ParkingFloor> parkingFloorList = new ArrayList<>();
 
-        ParkingFloor parkingFloor = new ParkingFloor();
         for (int i = 1; i<=10; i++){
+            ParkingFloor parkingFloor = new ParkingFloor();
             parkingFloor.setParkingFloorStatus(ParkingFloorStatus.AVAILABLE);
             parkingFloor.setFloorNumber(i);
             List<ParkingSpot> parkingSpots = new ArrayList<>();
@@ -52,6 +52,7 @@ public class InitializationService {
             }
             parkingFloor.setParkingSpots(parkingSpots);
             Gate entryGate = new Gate();
+            entryGate.setId((i*1000) + 1);
             entryGate.setGateNumber((i*100) + 1);
             entryGate.setGateStatus(GateStatus.OPEN);
             entryGate.setGateType(GateType.ENTRY);
@@ -60,11 +61,12 @@ public class InitializationService {
             gateRepository.put(entryGate);
 
             Gate exitGate = new Gate();
+            exitGate.setId((i*1000) + 2);
             exitGate.setGateNumber((i*100) + 2);
             exitGate.setGateStatus(GateStatus.OPEN);
             exitGate.setGateType(GateType.EXIT);
             exitGate.setOperatorName("Operator is: " + i+2);
-            parkingFloor.setEntryGate(entryGate);
+            parkingFloor.setExitGate(entryGate);
             parkingFloorList.add(parkingFloor);
             parkingFloorRepository.put(parkingFloor);
             gateRepository.put(exitGate);
@@ -73,5 +75,4 @@ public class InitializationService {
         parkingLotRepository.put(parkingLot);
         return parkingLot;
     }
-
 }

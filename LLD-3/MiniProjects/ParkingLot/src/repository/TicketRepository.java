@@ -21,9 +21,10 @@ public class TicketRepository {
          return ticket;
      }
 
-     public void put(Ticket ticket){
+     public Ticket put(Ticket ticket){
          ticket.setId(++counter);
          ticketMap.put(ticket.getId(), ticket);
          System.out.println("Ticket has been added successfully");
+         return ticketMap.get(counter);
      }
 }

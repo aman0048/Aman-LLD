@@ -61,4 +61,15 @@ public class Bill extends BaseModel{
     public void setExitGate(Gate exitGate) {
         this.exitGate = exitGate;
     }
+
+    @Override
+    public String toString() {
+        return "{ " +
+                ",\n exitTime = " + exitTime +
+                ",\n amount = " + amount +
+                ",\n status = " + status +
+                ",\n ticket = " + ticket +
+                ",\n exitGateNumber = " + exitGate.getGateNumber() +
+                "\n }";
+    }
 }

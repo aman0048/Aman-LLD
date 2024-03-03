@@ -8,12 +8,10 @@ import java.util.Map;
 
 public class GateRepository {
      private final Map<Integer, Gate> gateMap;
-    private static int counter = 0;
-
+//    private static int counter = 0;
      public GateRepository(){
          this.gateMap = new HashMap<>();
      }
-
      public Gate get(int gateId){
          Gate gate = gateMap.get(gateId);
          if (gate == null){
@@ -23,7 +21,7 @@ public class GateRepository {
      }
 
      public void put(Gate gate){
-         gate.setId(++counter);
+//         gate.setId(++counter);
          gateMap.put(gate.getId(), gate);
          System.out.println("Gate has been added successfully");
      }
