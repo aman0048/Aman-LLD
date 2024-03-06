@@ -9,6 +9,7 @@ import service.BillService;
 import service.InitializationService;
 import service.TicketService;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class ParkingLotMain {
