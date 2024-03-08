@@ -16,3 +16,18 @@
     - Create a new connection, use same username and db name
 - You are done with the DB setup in Dbeaver
 - Add same data in application.properties file
+
+
+# Application.properties data for MySQL
+
+- spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+- spring.jpa.hibernate.ddl-auto=update
+- spring.jpa.properties.hibernate.show_sql=true
+- spring.jpa.show-sql=true
+- spring.datasource.url=jdbc:mysql://localhost:3306/bookmyshow
+- spring.datasource.username=
+- spring.datasource.password=
+
+
+
+
