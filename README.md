@@ -15,13 +15,13 @@ This LLD module will consist of
 - git init (creates a new Git repository)
 - git remote add origin REPOSITORY URL (To create a remote connection called origin pointing to repository)
 - example : git remote add origin https://github.com/aman0048/Aman-LLD
-- git add . (Stage files to be commited)
+- git add . (Stage files to be committed)
 - git commit -m "Commit Message in double quotes" (Commit message to describe your changes)
 - git push origin master (Push the changes)
 
 
 # Other git commands
-- git checkout -b "New Branch Name" (Creates new branch)
+- git checkout -b "New Branch Name" (Creates new branch locally)
 - git status (Check the status)
 - git pull origin master (fetches commits from the master branch of the origin remote)
 - git clone BRANCH NAME (Will clone the existing repository in local)
