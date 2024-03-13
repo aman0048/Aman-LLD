@@ -26,5 +26,6 @@ public class Main {
         for (Thread t1 : t){
             t1.start();
         }
+
     }
 }

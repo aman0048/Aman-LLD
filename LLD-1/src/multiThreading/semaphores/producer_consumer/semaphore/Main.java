@@ -37,5 +37,22 @@ public class Main {
         for (Thread t1 : t){
             t1.start();
         }
+
+
+
+//        Queue<Object> q = new ConcurrentLinkedQueue<>();
+//        int maxSize = 6;
+//        Semaphore producerSemaphore = new Semaphore(maxSize);
+//        Semaphore consumerSemaphore = new Semaphore(0);
+//
+//        Thread producerThread1 = new Thread(new Producer(q, maxSize, "Producer1", producerSemaphore, consumerSemaphore));
+//        Thread producerThread2 = new Thread(new Producer(q, maxSize, "Producer2", producerSemaphore, consumerSemaphore));
+//        Thread consumerThread1 = new Thread(new Consumer(q, maxSize, "Consumer1", producerSemaphore, consumerSemaphore));
+//        Thread consumerThread2 = new Thread(new Consumer(q, maxSize, "Consumer2", producerSemaphore, consumerSemaphore));
+//
+//        producerThread1.start();
+//        producerThread2.start();
+//        consumerThread1.start();
+//        consumerThread2.start();
     }
 }
